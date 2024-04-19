@@ -9,4 +9,11 @@
 * Displaying modal interfaces using sheets
 * Custom view initializers
 * Rendering views conditionally using Group
+* Relating one model to another using properties
+* Making a many-to-one relationship with an optional model type
+* Making a one-to-many relationship with an array of model types
+* Using a Picker to choose a value from a list of options
+* Predicates that use logical expressions to filter data
+* Initializing a custom @Query property
+* Using a wrapper view to enable dynamic updates of query criteria
 
