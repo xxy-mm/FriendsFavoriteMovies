@@ -42,4 +42,8 @@ class SampleData {
             print("Sample data context failed to save.")
         }
     }
+    
+    var movie: Movie {
+        Movie.sampleData[0]
+    }
 }
