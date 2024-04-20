@@ -17,3 +17,7 @@
 * Initializing a custom @Query property
 * Using a wrapper view to enable dynamic updates of query criteria
 
+## Change log
+
+fix: when adding friend with favorite movie, the sheet popup multiple times.
+> conclusion: We need to insert the new friend the same time as the sheet appears in the friend list.If we execute the `modelContext.insert` method in the detail view, the friends array in the list view decorated by @Query will be changed, causing related views being recreated(in this case, the sheet view).

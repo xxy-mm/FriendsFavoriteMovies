@@ -31,19 +31,26 @@ struct FriendDetail: View {
                     .autocorrectionDisabled()
                     .multilineTextAlignment(.trailing)
             }
-            Picker("Favorite Movie", selection: $friend.favoriteMovie) {
-                Text("None")
-                    .tag(nil as Movie?)
-                ForEach(movies) { movie in
-                    Text(movie.title).tag(movie as Movie?)
-                }
-            }.pickerStyle(.navigationLink)
+            NavigationStack{
+                Picker("Favorite Movie", selection: $friend.favoriteMovie) {
+                    Text("None")
+                        .tag(nil as Movie?)
+                    ForEach(movies) { movie in
+                        Text(movie.title).tag(movie as Movie?)
+                    }
+                }.pickerStyle(.navigationLink)
+            }
         }
         .navigationTitle(isNew ? "New Friend" : "Friend")
         .toolbar{
             if isNew {
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Done", action: addFriend)
+                    Button("Done") {
+                        guard !friend.name.isEmptyString else {
+                            return
+                        }
+                        dismiss()
+                    }
                 }
                 
                 ToolbarItem(placement: .cancellationAction) {
@@ -53,14 +60,6 @@ struct FriendDetail: View {
                 }
             }
         }
-    }
-    
-    private func addFriend() {
-        guard !friend.name.isEmptyString else {
-            return
-        }
-        modelContext.insert(friend)
-        dismiss()
     }
 }
 

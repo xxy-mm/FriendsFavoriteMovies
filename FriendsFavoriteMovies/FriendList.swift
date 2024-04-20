@@ -61,6 +61,7 @@ struct FriendList: View {
     private func addFriend() {
         withAnimation {
             newFriend = Friend(name: "")
+            modelContext.insert(newFriend!)
         }
     }
 
